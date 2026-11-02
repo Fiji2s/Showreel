@@ -20,8 +20,8 @@ a:hover{text-decoration:underline}
 .ctl button:disabled{opacity:.35;cursor:default}
 .ctl button:focus-visible,.track:focus-visible{outline:2px solid #121212;outline-offset:2px}
 .car{position:relative}
-.edge{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:48px;height:48px;padding:0;border:1px solid rgba(243,242,238,.7);background:rgba(18,18,18,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.85;transition:opacity .2s,background .2s}
-.edge:hover{opacity:1;background:rgba(18,18,18,.85)}
+.edge{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:40px;height:56px;padding:0;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.5;transition:opacity .2s}
+.edge:hover{opacity:.85}
 .edge.prev{left:8px}
 .edge.next{right:8px}
 .edge.off{opacity:0;pointer-events:none}
@@ -95,7 +95,7 @@ a:hover{text-decoration:underline}
 <span style="font-size: 15px; color: #55555C">У каждой: задача, моя роль, инструменты.</span>
 <div class="ctl" style="margin-left: auto; align-self: center; display: flex; align-items: center; gap: 12px">
 <span class="cnt" aria-live="polite" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; min-width: 84px; text-align: right"></span>
-<button type="button" class="prev" aria-label="Назад: работы"><svg width="20" height="12" viewBox="0 0 20 12" aria-hidden="true" style="transform: scaleX(-1)"><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#121212" stroke-width="1.5"/></svg></button>
+<button type="button" class="prev" aria-label="Назад: работы"><svg width="28" height="17" viewBox="0 0 20 12" aria-hidden="true" style="transform: scaleX(-1)"><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#121212" stroke-width="1.5"/></svg></button>
 <button type="button" class="next" aria-label="Вперёд: работы"><svg width="20" height="12" viewBox="0 0 20 12" aria-hidden="true"><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#121212" stroke-width="1.5"/></svg></button>
 </div>
 </div>
@@ -339,7 +339,7 @@ var wrap=document.createElement('div'); wrap.className='car'; wrap.setAttribute(
 track.parentNode.insertBefore(wrap,track); wrap.appendChild(track);
 function edge(cls,flip,label,btn){
 var b=document.createElement('button'); b.type='button'; b.className='edge '+cls; b.setAttribute('aria-label',label); b.tabIndex=-1;
-b.innerHTML='<svg width="20" height="12" viewBox="0 0 20 12" aria-hidden="true"'+(flip?' style="transform:scaleX(-1)"':'')+'><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#F3F2EE" stroke-width="1.5"/></svg>';
+b.innerHTML='<svg width="20" height="12" viewBox="0 0 20 12" aria-hidden="true"'+(flip?' style="transform:scaleX(-1)"':'')+'><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#6B6B6B" stroke-width="2"/></svg>';
 b.addEventListener('click',function(){btn.click()});
 wrap.appendChild(b); return b;
 }
