@@ -12,7 +12,7 @@ a{color:#121212;text-decoration:none}
 a:hover{text-decoration:underline}
 .track{display:flex!important;flex-wrap:nowrap!important;gap:24px!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;position:relative;scrollbar-width:none;--per:2}
 .track::-webkit-scrollbar{display:none}
-.slide{flex:0 0 calc((100% - (var(--per) - 1) * 24px) / var(--per))!important;scroll-snap-align:start;min-width:0}
+.slide{box-sizing:border-box;flex:0 0 calc((100% - (var(--per) - 1) * 24px) / var(--per))!important;scroll-snap-align:start;min-width:0}
 @media (max-width:720px){.track{--per:1}}
 @media (prefers-reduced-motion:reduce){.track{scroll-behavior:auto}}
 .ctl button{width:44px;height:44px;padding:0;border:1px solid #121212;background:#F3F2EE;cursor:pointer;display:flex;align-items:center;justify-content:center}
