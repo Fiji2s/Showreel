@@ -10,6 +10,15 @@
 body{margin:0;background:#F3F2EE}
 a{color:#121212;text-decoration:none}
 a:hover{text-decoration:underline}
+.track{display:flex!important;flex-wrap:nowrap!important;gap:24px!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;position:relative;scrollbar-width:none;--per:2}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 calc((100% - (var(--per) - 1) * 24px) / var(--per))!important;scroll-snap-align:start;min-width:0}
+@media (max-width:720px){.track{--per:1}}
+@media (prefers-reduced-motion:reduce){.track{scroll-behavior:auto}}
+.ctl button{width:44px;height:44px;padding:0;border:1px solid #121212;background:#F3F2EE;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.ctl button.next{background:#FF5A1F}
+.ctl button:disabled{opacity:.35;cursor:default}
+.ctl button:focus-visible,.track:focus-visible{outline:2px solid #121212;outline-offset:2px}
 </style>
 </head>
 <body>
@@ -69,11 +78,16 @@ a:hover{text-decoration:underline}
 <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">01</span>
 <h2 style="margin: 0; font-weight: 600; font-size: 32px; letter-spacing: -0.01em">Работы</h2>
 <span style="font-size: 15px; color: #55555C">У каждой: задача, моя роль, инструменты.</span>
+<div class="ctl" style="margin-left: auto; align-self: center; display: flex; align-items: center; gap: 12px">
+<span class="cnt" aria-live="polite" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; min-width: 84px; text-align: right"></span>
+<button type="button" class="prev" aria-label="Назад: работы"><svg width="20" height="12" viewBox="0 0 20 12" aria-hidden="true" style="transform: scaleX(-1)"><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#121212" stroke-width="1.5"/></svg></button>
+<button type="button" class="next" aria-label="Вперёд: работы"><svg width="20" height="12" viewBox="0 0 20 12" aria-hidden="true"><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#121212" stroke-width="1.5"/></svg></button>
+</div>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 24px">
+<div class="track" tabindex="0" role="region" aria-label="Работы">
 
-<article style="display: flex; flex-direction: column; border: 1px solid #121212">
+<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
 <div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-01</span><span>[ТИП]</span></div>
 <div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
 <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
@@ -90,7 +104,7 @@ a:hover{text-decoration:underline}
 </dl>
 </article>
 
-<article style="display: flex; flex-direction: column; border: 1px solid #121212">
+<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
 <div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-02</span><span>[ТИП]</span></div>
 <div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
 <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
@@ -107,7 +121,7 @@ a:hover{text-decoration:underline}
 </dl>
 </article>
 
-<article style="display: flex; flex-direction: column; border: 1px solid #121212">
+<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
 <div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-03</span><span>[ТИП]</span></div>
 <div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
 <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
@@ -124,7 +138,7 @@ a:hover{text-decoration:underline}
 </dl>
 </article>
 
-<article style="display: flex; flex-direction: column; border: 1px solid #121212">
+<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
 <div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-04</span><span>[ТИП]</span></div>
 <div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
 <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
@@ -141,7 +155,7 @@ a:hover{text-decoration:underline}
 </dl>
 </article>
 
-<article style="display: flex; flex-direction: column; border: 1px solid #121212">
+<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
 <div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-05</span><span>[ТИП]</span></div>
 <div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
 <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
@@ -158,7 +172,7 @@ a:hover{text-decoration:underline}
 </dl>
 </article>
 
-<article style="display: flex; flex-direction: column; border: 1px solid #121212">
+<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
 <div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-06</span><span>[ТИП]</span></div>
 <div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
 <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
@@ -183,11 +197,16 @@ a:hover{text-decoration:underline}
 <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">02</span>
 <h2 style="margin: 0; font-weight: 600; font-size: 32px; letter-spacing: -0.01em">Как устроена работа</h2>
 <span style="font-size: 15px; color: #55555C">Каждый шаг берёт на вход результат предыдущего, поэтому ничего не теряется.</span>
+<div class="ctl" style="margin-left: auto; align-self: center; display: flex; align-items: center; gap: 12px">
+<span class="cnt" aria-live="polite" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; min-width: 84px; text-align: right"></span>
+<button type="button" class="prev" aria-label="Назад: шаги"><svg width="20" height="12" viewBox="0 0 20 12" aria-hidden="true" style="transform: scaleX(-1)"><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#121212" stroke-width="1.5"/></svg></button>
+<button type="button" class="next" aria-label="Вперёд: шаги"><svg width="20" height="12" viewBox="0 0 20 12" aria-hidden="true"><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#121212" stroke-width="1.5"/></svg></button>
+</div>
 </div>
 
-<div style="display: flex; flex-wrap: wrap; gap: 24px">
+<div class="track" tabindex="0" role="region" aria-label="Как устроена работа">
 
-<div style="flex: 1 1 220px; min-width: 0; border-top: 2px solid #121212; padding-top: 14px; display: flex; flex-direction: column; gap: 12px">
+<div class="slide" style="flex: 1 1 220px; min-width: 0; border-top: 2px solid #121212; padding-top: 14px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; align-items: center; justify-content: space-between">
 <div style="display: flex; align-items: center; gap: 8px">
 <div style="width: 12px; height: 12px; background: #FF5A1F; border: 1px solid #121212"></div>
@@ -202,7 +221,7 @@ a:hover{text-decoration:underline}
 </dl>
 </div>
 
-<div style="flex: 1 1 220px; min-width: 0; border-top: 2px solid #121212; padding-top: 14px; display: flex; flex-direction: column; gap: 12px">
+<div class="slide" style="flex: 1 1 220px; min-width: 0; border-top: 2px solid #121212; padding-top: 14px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; align-items: center; justify-content: space-between">
 <div style="display: flex; align-items: center; gap: 8px">
 <div style="width: 12px; height: 12px; background: #FF5A1F; border: 1px solid #121212"></div>
@@ -217,7 +236,7 @@ a:hover{text-decoration:underline}
 </dl>
 </div>
 
-<div style="flex: 1 1 220px; min-width: 0; border-top: 2px solid #121212; padding-top: 14px; display: flex; flex-direction: column; gap: 12px">
+<div class="slide" style="flex: 1 1 220px; min-width: 0; border-top: 2px solid #121212; padding-top: 14px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; align-items: center; justify-content: space-between">
 <div style="display: flex; align-items: center; gap: 8px">
 <div style="width: 12px; height: 12px; background: #FF5A1F; border: 1px solid #121212"></div>
@@ -232,7 +251,7 @@ a:hover{text-decoration:underline}
 </dl>
 </div>
 
-<div style="flex: 1 1 220px; min-width: 0; border-top: 2px solid #121212; padding-top: 14px; display: flex; flex-direction: column; gap: 12px">
+<div class="slide" style="flex: 1 1 220px; min-width: 0; border-top: 2px solid #121212; padding-top: 14px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; align-items: center; justify-content: space-between">
 <div style="display: flex; align-items: center; gap: 8px">
 <div style="width: 12px; height: 12px; background: #FF5A1F; border: 1px solid #121212"></div>
@@ -247,7 +266,7 @@ a:hover{text-decoration:underline}
 </dl>
 </div>
 
-<div style="flex: 1 1 220px; min-width: 0; border-top: 2px solid #121212; padding-top: 14px; display: flex; flex-direction: column; gap: 12px">
+<div class="slide" style="flex: 1 1 220px; min-width: 0; border-top: 2px solid #121212; padding-top: 14px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; align-items: center; justify-content: space-between">
 <div style="display: flex; align-items: center; gap: 8px">
 <div style="width: 12px; height: 12px; background: #FF5A1F; border: 1px solid #121212"></div>
@@ -282,16 +301,41 @@ a:hover{text-decoration:underline}
 <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px; align-items: flex-start">
 <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.06em; color: #55555C">НАПИСАТЬ</div>
 <a href="mailto:" style="min-height: 52px; box-sizing: border-box; padding: 0 28px; display: inline-flex; align-items: center; background: #FF5A1F; border: 1px solid #121212; font-weight: 600">[твоя почта]</a>
-<a href="https://t.me/" style="min-height: 52px; box-sizing: border-box; padding: 0 28px; display: inline-flex; align-items: center; border: 1px solid #121212; font-weight: 600">Telegram: [@ник]</a>
+<a href="https://t.me/Fiji_kor" style="min-height: 52px; box-sizing: border-box; padding: 0 28px; display: inline-flex; align-items: center; border: 1px solid #121212; font-weight: 600">Telegram: @Fiji_kor</a>
 </div>
 </div>
 </section>
 
 <footer style="width: 100%; max-width: 1280px; box-sizing: border-box; padding: 20px 16px 40px; border-top: 1px solid #121212; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #55555C">
-<span>© [ТВОЁ ИМЯ], [год]</span>
+<span>© FIJI, 2026</span>
 <span>Конец документа</span>
 </footer>
 
 </div>
+<script>
+(function(){
+function pad(n){return n<10?'0'+n:''+n}
+function init(id){
+var sec=document.getElementById(id); if(!sec) return;
+var track=sec.querySelector('.track'), ctl=sec.querySelector('.ctl');
+var slides=[].slice.call(track.querySelectorAll('.slide'));
+var cnt=ctl.querySelector('.cnt'), prev=ctl.querySelector('.prev'), next=ctl.querySelector('.next');
+function per(){return Math.max(1,parseInt(getComputedStyle(track).getPropertyValue('--per'),10)||1)}
+function step(){return slides.length>1?slides[1].offsetLeft-slides[0].offsetLeft:track.clientWidth}
+function update(){
+var i=Math.round(track.scrollLeft/step()), a=i+1, b=Math.min(i+per(),slides.length);
+cnt.textContent=pad(a)+(b>a?'–'+pad(b):'')+' / '+pad(slides.length);
+prev.disabled=track.scrollLeft<=2;
+next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-2;
+}
+prev.addEventListener('click',function(){track.scrollBy({left:-step()*per()})});
+next.addEventListener('click',function(){track.scrollBy({left:step()*per()})});
+track.addEventListener('scroll',update,{passive:true});
+window.addEventListener('resize',update);
+update();
+}
+init('works'); init('process');
+})();
+</script>
 </body>
 </html>
