@@ -19,6 +19,13 @@ a:hover{text-decoration:underline}
 .ctl button.next{background:#FF5A1F}
 .ctl button:disabled{opacity:.35;cursor:default}
 .ctl button:focus-visible,.track:focus-visible{outline:2px solid #121212;outline-offset:2px}
+.car{position:relative}
+.edge{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:48px;height:48px;padding:0;border:1px solid rgba(243,242,238,.7);background:rgba(18,18,18,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.85;transition:opacity .2s,background .2s}
+.edge:hover{opacity:1;background:rgba(18,18,18,.85)}
+.edge.prev{left:8px}
+.edge.next{right:8px}
+.edge.off{opacity:0;pointer-events:none}
+.car[data-k="works"] .edge{top:44%}
 </style>
 </head>
 <body>
@@ -328,6 +335,15 @@ var sec=document.getElementById(id); if(!sec) return;
 var track=sec.querySelector('.track'), ctl=sec.querySelector('.ctl');
 var slides=[].slice.call(track.querySelectorAll('.slide'));
 var cnt=ctl.querySelector('.cnt'), prev=ctl.querySelector('.prev'), next=ctl.querySelector('.next');
+var wrap=document.createElement('div'); wrap.className='car'; wrap.setAttribute('data-k',id);
+track.parentNode.insertBefore(wrap,track); wrap.appendChild(track);
+function edge(cls,flip,label,btn){
+var b=document.createElement('button'); b.type='button'; b.className='edge '+cls; b.setAttribute('aria-label',label); b.tabIndex=-1;
+b.innerHTML='<svg width="20" height="12" viewBox="0 0 20 12" aria-hidden="true"'+(flip?' style="transform:scaleX(-1)"':'')+'><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#F3F2EE" stroke-width="1.5"/></svg>';
+b.addEventListener('click',function(){btn.click()});
+wrap.appendChild(b); return b;
+}
+var ep=edge('prev',true,'Назад',prev), en=edge('next',false,'Вперёд',next);
 function per(){return Math.max(1,parseInt(getComputedStyle(track).getPropertyValue('--per'),10)||1)}
 function step(){return slides.length>1?slides[1].offsetLeft-slides[0].offsetLeft:track.clientWidth}
 function update(){
@@ -335,6 +351,7 @@ var i=Math.round(track.scrollLeft/step()), a=i+1, b=Math.min(i+per(),slides.leng
 cnt.textContent=pad(a)+(b>a?'–'+pad(b):'')+' / '+pad(slides.length);
 prev.disabled=track.scrollLeft<=2;
 next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-2;
+ep.classList.toggle('off',prev.disabled); en.classList.toggle('off',next.disabled);
 }
 prev.addEventListener('click',function(){track.scrollBy({left:-step()*per()})});
 next.addEventListener('click',function(){track.scrollBy({left:step()*per()})});
