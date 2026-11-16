@@ -28,6 +28,18 @@ a:hover{text-decoration:underline}
 .edge.next{right:8px}
 .edge.off{opacity:0;pointer-events:none}
 .car[data-k="works"] .edge{top:44%}
+.src button{min-height:40px;padding:0 14px;border:0;background:#F3F2EE;color:#121212;font:500 13px 'IBM Plex Mono',monospace;cursor:pointer}
+.src button+button{border-left:1px solid #121212}
+.src button[aria-pressed="true"]{background:#121212;color:#F3F2EE}
+.src button:focus-visible,.vp button:focus-visible{outline:2px solid #FF5A1F;outline-offset:-3px}
+.vp{position:relative;aspect-ratio:16/9;background:#E6E4DD;border-bottom:1px solid #121212;overflow:hidden}
+.vp.on{background:#000}
+.vp button{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.vp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.2)}
+.vp .pl{position:relative;width:64px;height:64px;background:#FF5A1F;border:1px solid #121212;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.vp button:hover .pl{transform:scale(1.06)}
+.vp .lb{position:absolute;left:10px;bottom:10px;padding:3px 8px;background:#F3F2EE;border:1px solid #121212;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.04em}
+.vp iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 </style>
 </head>
 <body>
@@ -89,6 +101,10 @@ a:hover{text-decoration:underline}
 <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">01</span>
 <h2 style="margin: 0; font-weight: 600; font-size: 32px; letter-spacing: -0.01em">Работы</h2>
 <span style="font-size: 15px; color: #55555C">У каждой: задача, моя роль, инструменты.</span>
+<div class="src" role="group" aria-label="Где смотреть видео" style="align-self: center; display: flex; align-items: center; gap: 10px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #55555C">ПЛЕЕР</span>
+<div style="display: flex; border: 1px solid #121212"><button type="button" data-src="vk" aria-pressed="true">VK Видео</button><button type="button" data-src="yt" aria-pressed="false">YouTube</button></div>
+</div>
 <div class="ctl" style="margin-left: auto; align-self: center; display: flex; align-items: center; gap: 12px">
 <span class="cnt" aria-live="polite" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; min-width: 84px; text-align: right"></span>
 <button type="button" class="prev" aria-label="Назад: работы"><svg width="28" height="17" viewBox="0 0 20 12" aria-hidden="true" style="transform: scaleX(-1)"><path d="M0 6h18M13 1l5 5-5 5" fill="none" stroke="#121212" stroke-width="1.5"/></svg></button>
@@ -99,13 +115,71 @@ a:hover{text-decoration:underline}
 <div class="track" tabindex="0" role="region" aria-label="Работы">
 
 <article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
-<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-01</span><span>[ТИП]</span></div>
-<div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
-</div>
+<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-01</span><span>16:9</span></div>
+<div class="vp" data-yt="6rwBpsOtIJY" data-vk="456239019" data-title="Свадьба"></div>
 <dl style="margin: 0; padding: 14px; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 14px">
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Проект</dt>
-<dd style="margin: 0; font-weight: 600">Truwr</dd>
+<dd style="margin: 0; font-weight: 600">Свадьба</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Задача</dt>
+<dd style="margin: 0">[Что нужно было сделать]</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Моя роль</dt>
+<dd style="margin: 0">[Монтаж, цвет, звук]</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Инструменты</dt>
+<dd style="margin: 0">[Программы]</dd>
+</dl>
+</article>
+
+<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
+<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-02</span><span>9:16</span></div>
+<div class="vp" data-yt="G0zIhQDVfU4" data-vk="456239018" data-title="AI"></div>
+<dl style="margin: 0; padding: 14px; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 14px">
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Проект</dt>
+<dd style="margin: 0; font-weight: 600">AI</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Задача</dt>
+<dd style="margin: 0">[Что нужно было сделать]</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Моя роль</dt>
+<dd style="margin: 0">[Монтаж, цвет, звук]</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Инструменты</dt>
+<dd style="margin: 0">[Программы]</dd>
+</dl>
+</article>
+
+<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
+<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-03</span><span>9:16</span></div>
+<div class="vp" data-yt="UkzrgNumBxM" data-vk="456239023" data-title="Анимация"></div>
+<dl style="margin: 0; padding: 14px; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 14px">
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Проект</dt>
+<dd style="margin: 0; font-weight: 600">Анимация</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Задача</dt>
+<dd style="margin: 0">[Что нужно было сделать]</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Моя роль</dt>
+<dd style="margin: 0">[Монтаж, цвет, звук]</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Инструменты</dt>
+<dd style="margin: 0">[Программы]</dd>
+</dl>
+</article>
+
+<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
+<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-04</span><span>9:16</span></div>
+<div class="vp" data-yt="w_JSXOZ08SM" data-vk="456239021" data-title="Ремонт"></div>
+<dl style="margin: 0; padding: 14px; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 14px">
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Проект</dt>
+<dd style="margin: 0; font-weight: 600">Ремонт</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Задача</dt>
+<dd style="margin: 0">[Что нужно было сделать]</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Моя роль</dt>
+<dd style="margin: 0">[Монтаж, цвет, звук]</dd>
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Инструменты</dt>
+<dd style="margin: 0">[Программы]</dd>
+</dl>
+</article>
+
+<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
+<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-05</span><span>16:9</span></div>
+<div class="vp" data-yt="hxRhh_FEDlY" data-vk="456239020" data-title="Truvor — бренд школьной формы"></div>
+<dl style="margin: 0; padding: 14px; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 14px">
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Проект</dt>
+<dd style="margin: 0; font-weight: 600">Truvor — бренд школьной формы</dd>
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Задача</dt>
 <dd style="margin: 0">Обзор новой коллекции школьной одежды</dd>
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Моя роль</dt>
@@ -116,13 +190,11 @@ a:hover{text-decoration:underline}
 </article>
 
 <article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
-<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-02</span><span>[ТИП]</span></div>
-<div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
-</div>
+<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-06</span><span>9:16</span></div>
+<div class="vp" data-yt="OgLwim2Y2bs" data-vk="456239024" data-title="Бэкстейдж"></div>
 <dl style="margin: 0; padding: 14px; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 14px">
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Проект</dt>
-<dd style="margin: 0; font-weight: 600">[Название проекта]</dd>
+<dd style="margin: 0; font-weight: 600">Бэкстейдж</dd>
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Задача</dt>
 <dd style="margin: 0">[Что нужно было сделать]</dd>
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Моя роль</dt>
@@ -133,13 +205,11 @@ a:hover{text-decoration:underline}
 </article>
 
 <article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
-<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-03</span><span>[ТИП]</span></div>
-<div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
-</div>
+<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-07</span><span>9:16</span></div>
+<div class="vp" data-yt="H3gF9DksS4g" data-vk="456239017" data-title="Фешн"></div>
 <dl style="margin: 0; padding: 14px; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 14px">
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Проект</dt>
-<dd style="margin: 0; font-weight: 600">[Название проекта]</dd>
+<dd style="margin: 0; font-weight: 600">Фешн</dd>
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Задача</dt>
 <dd style="margin: 0">[Что нужно было сделать]</dd>
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Моя роль</dt>
@@ -150,47 +220,11 @@ a:hover{text-decoration:underline}
 </article>
 
 <article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
-<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-04</span><span>[ТИП]</span></div>
-<div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
-</div>
+<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-08</span><span>9:16</span></div>
+<div class="vp" data-yt="A-bGe_ZKeUE" data-vk="456239022" data-title="Intro"></div>
 <dl style="margin: 0; padding: 14px; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 14px">
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Проект</dt>
-<dd style="margin: 0; font-weight: 600">[Название проекта]</dd>
-<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Задача</dt>
-<dd style="margin: 0">[Что нужно было сделать]</dd>
-<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Моя роль</dt>
-<dd style="margin: 0">[Монтаж, цвет, звук]</dd>
-<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Инструменты</dt>
-<dd style="margin: 0">[Программы]</dd>
-</dl>
-</article>
-
-<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
-<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-05</span><span>[ТИП]</span></div>
-<div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
-</div>
-<dl style="margin: 0; padding: 14px; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 14px">
-<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Проект</dt>
-<dd style="margin: 0; font-weight: 600">[Название проекта]</dd>
-<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Задача</dt>
-<dd style="margin: 0">[Что нужно было сделать]</dd>
-<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Моя роль</dt>
-<dd style="margin: 0">[Монтаж, цвет, звук]</dd>
-<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Инструменты</dt>
-<dd style="margin: 0">[Программы]</dd>
-</dl>
-</article>
-
-<article class="slide" style="display: flex; flex-direction: column; border: 1px solid #121212">
-<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #121212; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em"><span>W-06</span><span>[ТИП]</span></div>
-<div style="aspect-ratio: 16 / 9; background: #E6E4DD; border-bottom: 1px solid #121212; display: flex; align-items: center; justify-content: center">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg>
-</div>
-<dl style="margin: 0; padding: 14px; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 14px">
-<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Проект</dt>
-<dd style="margin: 0; font-weight: 600">[Название проекта]</dd>
+<dd style="margin: 0; font-weight: 600">Intro</dd>
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Задача</dt>
 <dd style="margin: 0">[Что нужно было сделать]</dd>
 <dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #55555C">Моя роль</dt>
@@ -371,6 +405,37 @@ window.addEventListener('resize',update);
 update();
 }
 init('works'); init('process');
+})();
+(function(){
+var KEY='player-src', src='vk';
+try{var v=localStorage.getItem(KEY); if(v==='yt'||v==='vk') src=v}catch(e){}
+var boxes=[].slice.call(document.querySelectorAll('.vp'));
+var btns=[].slice.call(document.querySelectorAll('.src button'));
+function url(b){
+return src==='yt'
+?'https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0&playsinline=1'
+:'https://vk.ru/video_ext.php?oid=-182464250&id='+b.dataset.vk+'&hd=3&autoplay=1';
+}
+function facade(b){
+b.classList.remove('on');
+b.innerHTML='<button type="button" aria-label="Смотреть: '+b.dataset.title+'">'
++'<img src="https://i.ytimg.com/vi/'+b.dataset.yt+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">'
++'<span class="pl"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg></span>'
++'<span class="lb">'+(src==='yt'?'YOUTUBE':'VK ВИДЕО')+'</span></button>';
+b.firstChild.addEventListener('click',function(){play(b)});
+}
+function play(b){
+boxes.forEach(function(o){if(o!==b&&o.classList.contains('on')) facade(o)});
+b.classList.add('on');
+b.innerHTML='<iframe src="'+url(b)+'" title="'+b.dataset.title+'" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock" allowfullscreen></iframe>';
+}
+function set(v){
+src=v; try{localStorage.setItem(KEY,v)}catch(e){}
+btns.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.src===v?'true':'false')});
+boxes.forEach(facade);
+}
+btns.forEach(function(x){x.addEventListener('click',function(){if(x.dataset.src!==src) set(x.dataset.src)})});
+set(src);
 })();
 </script>
 </body>
