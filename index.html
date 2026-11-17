@@ -377,7 +377,7 @@ a:hover{text-decoration:underline}
 <script>
 (function(){
 function pad(n){return n<10?'0'+n:''+n}
-function init(id){
+function init(id,loop){
 var sec=document.getElementById(id); if(!sec) return;
 var track=sec.querySelector('.track'), ctl=sec.querySelector('.ctl');
 var slides=[].slice.call(track.querySelectorAll('.slide'));
@@ -396,17 +396,20 @@ function step(){return slides.length>1?slides[1].offsetLeft-slides[0].offsetLeft
 function update(){
 var i=Math.round(track.scrollLeft/step()), a=i+1, b=Math.min(i+per(),slides.length);
 cnt.textContent=pad(a)+(b>a?'–'+pad(b):'')+' / '+pad(slides.length);
-prev.disabled=track.scrollLeft<=2;
-next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-2;
+var atS=track.scrollLeft<=2, atE=track.scrollLeft+track.clientWidth>=track.scrollWidth-2;
+prev.disabled=!loop&&atS;
+next.disabled=!loop&&atE;
 ep.classList.toggle('off',prev.disabled); en.classList.toggle('off',next.disabled);
 }
-prev.addEventListener('click',function(){track.scrollBy({left:-step()*per()})});
-next.addEventListener('click',function(){track.scrollBy({left:step()*per()})});
+function atStart(){return track.scrollLeft<=2}
+function atEnd(){return track.scrollLeft+track.clientWidth>=track.scrollWidth-2}
+prev.addEventListener('click',function(){if(loop&&atStart()) track.scrollTo({left:track.scrollWidth}); else track.scrollBy({left:-step()*per()})});
+next.addEventListener('click',function(){if(loop&&atEnd()) track.scrollTo({left:0}); else track.scrollBy({left:step()*per()})});
 track.addEventListener('scroll',update,{passive:true});
 window.addEventListener('resize',update);
 update();
 }
-init('works'); init('process');
+init('works',true); init('process');
 })();
 (function(){
 // VK временно выключен: чтобы вернуть, поставь VK_ON=true и убери display:none у .src
