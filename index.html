@@ -101,7 +101,7 @@ a:hover{text-decoration:underline}
 <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">01</span>
 <h2 style="margin: 0; font-weight: 600; font-size: 32px; letter-spacing: -0.01em">Работы</h2>
 <span style="font-size: 15px; color: #55555C">У каждой: задача, моя роль, инструменты.</span>
-<div class="src" role="group" aria-label="Где смотреть видео" style="align-self: center; display: flex; align-items: center; gap: 10px">
+<div class="src" role="group" aria-label="Где смотреть видео" style="align-self: center; display: none; align-items: center; gap: 10px">
 <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #55555C">ПЛЕЕР</span>
 <div style="display: flex; border: 1px solid #121212"><button type="button" data-src="vk" aria-pressed="true">VK Видео</button><button type="button" data-src="yt" aria-pressed="false">YouTube</button></div>
 </div>
@@ -407,8 +407,9 @@ update();
 init('works'); init('process');
 })();
 (function(){
-var KEY='player-src', src='vk';
-try{var v=localStorage.getItem(KEY); if(v==='yt'||v==='vk') src=v}catch(e){}
+// VK временно выключен: чтобы вернуть, поставь VK_ON=true и убери display:none у .src
+var VK_ON=false, KEY='player-src', src='yt';
+if(VK_ON){try{var v=localStorage.getItem(KEY); if(v==='yt'||v==='vk') src=v}catch(e){}}
 var boxes=[].slice.call(document.querySelectorAll('.vp'));
 var btns=[].slice.call(document.querySelectorAll('.src button'));
 function url(b){
@@ -421,7 +422,7 @@ b.classList.remove('on');
 b.innerHTML='<button type="button" aria-label="Смотреть: '+b.dataset.title+'">'
 +'<img src="https://i.ytimg.com/vi/'+b.dataset.yt+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">'
 +'<span class="pl"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="#121212"/></svg></span>'
-+'<span class="lb">'+(src==='yt'?'YOUTUBE':'VK ВИДЕО')+'</span></button>';
++(VK_ON?'<span class="lb">'+(src==='yt'?'YOUTUBE':'VK ВИДЕО')+'</span>':'')+'</button>';
 b.firstChild.addEventListener('click',function(){play(b)});
 }
 function play(b){
